@@ -2,4 +2,7 @@ pymongo[srv]==4.2.0
 from-root
 scikit-learn==1.1.3
 PyYAML
+scipy
+dill
+imblearn==0.0
 -e .
