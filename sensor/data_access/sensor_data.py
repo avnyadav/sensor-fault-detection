@@ -23,6 +23,22 @@ class SensorData:
         except Exception as e:
             raise SensorException(e, sys)
 
+
+    def save_csv_file(self,file_path ,collection_name: str, database_name: Optional[str] = None):
+        try:
+            data_frame=pd.read_csv(file_path=file_path)
+            data_frame.reset_index(drop=True, inplace=True)
+            records = list(json.loads(data_frame.T.to_json()).values())
+            if database_name is None:
+                collection = self.mongo_client.database[collection_name]
+            else:
+                collection = self.mongo_client[database_name][collection_name]
+            collection.insert_many(records)
+            return len(records)
+        except Exception as e:
+            raise SensorException(e, sys)
+
+
     def export_collection_as_dataframe(
         self, collection_name: str, database_name: Optional[str] = None) -> pd.DataFrame:
         try:
