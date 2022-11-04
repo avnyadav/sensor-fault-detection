@@ -3,7 +3,7 @@ from typing import Optional
 
 import numpy as np
 import pandas as pd
-
+import json
 from sensor.configuration.mongo_db_connection import MongoDBClient
 from sensor.constant.database import DATABASE_NAME
 from sensor.exception import SensorException
@@ -26,7 +26,7 @@ class SensorData:
 
     def save_csv_file(self,file_path ,collection_name: str, database_name: Optional[str] = None):
         try:
-            data_frame=pd.read_csv(file_path=file_path)
+            data_frame=pd.read_csv(file_path)
             data_frame.reset_index(drop=True, inplace=True)
             records = list(json.loads(data_frame.T.to_json()).values())
             if database_name is None:
