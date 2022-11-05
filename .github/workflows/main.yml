@@ -86,9 +86,14 @@ jobs:
         run: |
          docker pull ${{secrets.AWS_ECR_LOGIN_URI}}/${{ secrets.ECR_REPOSITORY_NAME }}:latest
 
-      - name: Stop the running container
+      - name: Stop container if running
         run: |
+         if [ "$(docker ps -f  status=running)" ]; then
+         # cleanup
+         echo "stoping running container"
          docker stop $(docker ps -q)
+         fi
+        
 
       - name: Run Docker Image to serve users
         run: |
