@@ -1,0 +1,15 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Installing extensions and dependencies...",
+      "type": "shell",
+      "command": "code-server --install-extension mongodb.mongodb-vscode --install-extension ms-python.python --install-extension formulahendry.code-runner && pip install -r requirements.txt",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "runOptions": { "runOn": "folderOpen" }
+    }
+  ]
+}
