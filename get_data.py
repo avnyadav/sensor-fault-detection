@@ -13,4 +13,3 @@ if __name__=='__main__':
         sd.mongo_client.database[DATA_INGESTION_COLLECTION_NAME].drop()
     sd.save_csv_file(file_path=data_file_path,collection_name=DATA_INGESTION_COLLECTION_NAME)
 
-ssssssssssssssssss
