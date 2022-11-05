@@ -7,7 +7,7 @@ from sensor.entity.config_entity import ModelTrainerConfig
 import os,sys
 from xgboost import XGBClassifier
 from sensor.ml.metric.classification_metric import get_classification_score
-from sensor.ml.model import SensorModel
+from sensor.ml.model.estimator import SensorModel
 from sensor.utils.main_utils import save_object,load_object
 class ModelTrainer:
 
