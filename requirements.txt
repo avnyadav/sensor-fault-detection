@@ -2,7 +2,6 @@ dill==0.3.5.1
 dnspython==2.2.1
 evidently==0.1.58.dev0
 fastapi==0.78.0
-from-root==1.0.2
 httptools==0.5.0
 imblearn==0.0
 mypy-boto3-s3==1.24.76
