@@ -88,7 +88,8 @@ jobs:
 
       - name: Stop container if running
         run: |
-         docker stop sensor || true
+         docker stop sensor || true && docker rm sensor || true
+       
 
       - name: Run Docker Image to serve users
         run: |
