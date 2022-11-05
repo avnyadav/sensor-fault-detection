@@ -18,8 +18,9 @@ from fastapi.middleware.cors import CORSMiddleware
 env_file_path="/config/workspace/env.yaml"
 
 def set_env_variable(env_file_path):
-    env_config = read_yaml_file(env_file_path)
-    os.environ['MONGO_DB_URL']=env_config['MONGO_DB_URL']
+    if os.environ['MONGO_DB_URL'] is None:
+        env_config = read_yaml_file(env_file_path)
+        os.environ['MONGO_DB_URL']=env_config['MONGO_DB_URL']
 
 
 app = FastAPI()
@@ -83,6 +84,6 @@ def main():
 
 
 if __name__=="__main__":
-    main()
-    # set_env_variable(env_file_path)
-    # app_run(app, host=APP_HOST, port=APP_PORT)
+    #main()
+    set_env_variable(env_file_path)
+    app_run(app, host=APP_HOST, port=APP_PORT)
