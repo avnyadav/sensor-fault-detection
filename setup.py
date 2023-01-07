@@ -5,12 +5,14 @@ def get_requirements()->List[str]:
     """
     This function will return list of requirements
     """
-    requirement_list:List[str] = []
+    #requirement_list:List[str] = []
 
     """
     Write a code to read requirements.txt file and append each requirements in requirement_list variable.
     """
-    return requirement_list
+    with open('requirements.txt') as f:
+        req = f.read().splitlines()
+    return req
 
 setup(
     name="sensor",
